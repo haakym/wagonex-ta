@@ -1,0 +1,105 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WagonEx ",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/weather": {
+      "get": {
+        "operationId": "weather.index",
+        "description": "5 days forecast for all cities.",
+        "responses": {
+          "200": {
+            "description": "A list of 5 days forecast per city.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/cityForecast5"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/weather/{city}": {
+      "get": {
+        "operationId": "weather.show",
+        "description": "5 days forecast for a city.",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "description": "City name.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {          
+            "description": "A list of 5 days forecast.",
+            "content": {
+              "application/json": {
+                "schema": "#/components/schemas/weather"
+              }
+            }
+          }
+        }
+      }
+    },
+    "city": {
+      "post": {
+        "operationId": "weather.store",
+        "description": "Add a new city.",
+        "requestBody": {
+          "description": "Data required for adding a new city.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {          
+            "description": "Details of new city.",
+            "content": {
+              "application/json": {
+                "schema": "#/components/schemas/city"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cityForecast5": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  }
+}
