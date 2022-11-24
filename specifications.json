@@ -26,15 +26,15 @@
         }
       }
     },
-    "/weather/{city}": {
+    "/weather/{cityId}": {
       "get": {
         "operationId": "weather.show",
         "description": "5 days forecast for a city.",
         "parameters": [
           {
-            "name": "city",
+            "name": "cityId",
             "in": "path",
-            "description": "City name.",
+            "description": "City Id.",
             "required": true,
             "schema": {
               "type": "string"
