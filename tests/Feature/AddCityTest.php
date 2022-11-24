@@ -15,7 +15,9 @@ class AddCityTest extends TestCase
     public function testAddACity()
     {
         $response = $this->post('/api/city', [
-          'name' => 'London, UK'
+          'name' => 'London, UK',
+          'latitude' => 51.50722,
+          'longitude' => -0.12750
         ]);
 
         $response->assertStatus(200);
