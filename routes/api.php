@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\WeatherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,6 @@ use App\Http\Controllers\CityController;
 |
 */
 
+Route::get('weather', [WeatherController::class, 'index']);
+Route::get('weather/{city}', [WeatherController::class, 'show']);
 Route::post('city', [CityController::class, 'store']);

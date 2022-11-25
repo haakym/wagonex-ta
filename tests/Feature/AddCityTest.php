@@ -15,7 +15,7 @@ class AddCityTest extends TestCase
      *
      * @return void
      */
-    public function testAddACity()
+    public function testAddACity(): void
     {
         // arrange
         $city = City::factory()->make();

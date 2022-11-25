@@ -9,6 +9,26 @@
       "get": {
         "operationId": "weather.index",
         "description": "5 days forecast for all cities.",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset the number of results returned.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of results returned.",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of 5 days forecast per city.",
