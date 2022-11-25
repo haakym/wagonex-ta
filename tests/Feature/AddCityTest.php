@@ -36,6 +36,11 @@ class AddCityTest extends TestCase
         ]);
     }
 
+    /**
+     * Adding a new city without required fields fails.
+     *
+     * @return void
+     */
     public function testFailsToAddWithoutRequiredFields(): void
     {
         $response = $this->postJson('/api/city', []);
