@@ -35,4 +35,10 @@ class AddCityTest extends TestCase
             'longitude' => $city->longitude,
         ]);
     }
+
+    public function testFailsToAddWithoutRequiredFields(): void
+    {
+        $response = $this->postJson('/api/city', []);
+        $response->assertStatus(422);
+    }
 }
