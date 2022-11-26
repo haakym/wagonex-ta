@@ -25,12 +25,8 @@ class WeatherController extends Controller
     {
         $offset = $request->get('offset', 0);
         $limit = $request->get('limit', $offset + 5);
-        $cities = City::offset($offset)->limit($limit)->get();
 
-        $forecasts = [];
-        foreach ($cities as $city) {
-            $forecasts[] = $this->forecastService->getFiveDayForecastForCityById($city->id);
-        }
+        $forecasts = $this->forecastService->getFiveDayForecastForCities($offset, $limit);
 
         return response()->json($forecasts);
     }
@@ -42,7 +38,7 @@ class WeatherController extends Controller
      */
     public function show(City $city): JsonResponse
     {
-        $forecast = $this->forecastService->getFiveDayForecastForCityById($city->id);
+        $forecast = $this->forecastService->getFiveDayForecastForCity($city);
 
         return response()->json($forecast);
     }
