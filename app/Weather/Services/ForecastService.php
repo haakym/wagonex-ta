@@ -16,8 +16,8 @@ class ForecastService
     }
 
     /**
-     * Get the five day forecast for a city using the open weather API or a 
-     * cached result. Cached results are stored for one hour (3600 seconds).
+     * Get the five day forecast for a city via the open weather API or cache.
+     * Cached results are stored for one hour (3600 seconds).
      * 
      * @return todo
      */
