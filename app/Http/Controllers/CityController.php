@@ -27,6 +27,6 @@ class CityController extends Controller
             'longitude' => $request->longitude,
         ]);
 
-        return response()->json($city);
+        return response()->json($city, 201);
     }
 }

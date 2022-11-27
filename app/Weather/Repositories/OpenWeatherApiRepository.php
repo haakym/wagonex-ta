@@ -14,8 +14,21 @@ class OpenWeatherApiRepository
     }
 
     /**
+     * API URL to retrieve the daily forecast.
+     * 
+     * @return string
+     */
+    private function getDailyForecastURL(): string
+    {
+        // return "{$this->baseUrl}/forecast/daily"; // not working?!
+        return "{$this->baseUrl}/forecast";
+    }
+
+    /**
      * Call OpenWeather API to get the five day forecast for a city using 
      * latitude and longitude.
+     * 
+     * @return Response
      */
     public function getFiveDayForecast($latitude, $longitude): Response
     {
@@ -26,7 +39,7 @@ class OpenWeatherApiRepository
             'cnt' => 5,
         ];
 
-        $response = Http::get("{$this->baseUrl}/forecast/", $queryParams);
+        $response = Http::get($this->getDailyForecastURL(), $queryParams);
 
         if (!$response->successful()) {
             // throw/handle exception

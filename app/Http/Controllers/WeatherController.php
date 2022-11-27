@@ -16,15 +16,15 @@ class WeatherController extends Controller
 
     /**
      * Get five day weather forecast for all cities in the database. Results are
-     * limited to five cities by default but may be overridden using the offset
-     * and limit query parameters.
+     * limited by default but may be overridden using the offset and limit query
+     * parameters.
      * 
      * @return JsonResponse
      */
     public function index(Request $request): JsonResponse
     {
         $offset = $request->get('offset', 0);
-        $limit = $request->get('limit', $offset + 5);
+        $limit = $request->get('limit', $offset + 25);
 
         $forecasts = $this->forecastService->getFiveDayForecastForCities($offset, $limit);
 

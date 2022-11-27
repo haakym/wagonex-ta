@@ -28,7 +28,7 @@ class AddCityTest extends TestCase
         ]);
 
         // assert
-        $response->assertStatus(200);
+        $response->assertStatus(201);
         $response->assertJson([
             'name' => $city->name,
             'latitude' => $city->latitude,

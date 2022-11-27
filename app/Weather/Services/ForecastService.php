@@ -16,7 +16,7 @@ class ForecastService
     }
 
     /**
-     * Get the five day forecast for a city via the open weather API or cache.
+     * Get five day forecast for a city via the open weather API or cache.
      * Cached results are stored for one hour (3600 seconds).
      * 
      * @return todo
@@ -33,10 +33,11 @@ class ForecastService
             Cache::put($forecastCacheKey, $forecast, 3600);
         }
 
-        return $forecast;
+        return FiveDayForecast::make($city, $forecast);
     }
 
     /**
+     * Get five day forecast for a group of cities.
      * 
      * @return array
      */
