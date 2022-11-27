@@ -4,9 +4,11 @@
 
 1. Run `composer install`.
 2. Check if `.env`file exists. If not, run `cp .env.example .env`.
-3. Update `.env`, add the api-key value to `OPEN_WEATHER_API_APP_ID`.
-2. Run `./vendor/bin/sail up`; docker must be installed and running for this to work.
-3. Access on `http://localhost` with postman or use front-end solution.
+3. Update `.env`, add the api-key value to `OPEN_WEATHER_API_APP_ID=`.
+4. Run `touch database/database.sqlite`.
+5. Run `./vendor/bin/sail up`; docker must be installed and running for this to work.
+6. Run `./vendor/bin/sail artisan migrate` to create the database tables.
+7. Access on `http://localhost` with postman or use front-end solution.
 
 ## Useful tips to review solution
 
